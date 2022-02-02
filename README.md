@@ -11,9 +11,7 @@
 | first_name         | string  | null: false               |
 | last_name_kana     | string  | null: false               |
 | first_name_kana    | string  | null: false               |
-| birth_year         | integer | null: false               |
-| birth_month        | integer | null: false               |
-| birth_day          | integer | null: false               |
+| birth_day          | date    | null: false               |
 
 ### Association
 
@@ -26,11 +24,11 @@
 | ------------------ | ----------- | ------------------------------ |
 | name               | string      | null: false                    |
 | description        | text        | null: false                    |
-| category           | string      | null: false                    |
-| condition          | string      | null: false                    |
-| postage            | string      | null: false                    |
-| prefecture         | string      | null: false                    |
-| days_post          | string      | null: false                    |
+| category_id        | integer     | null: false                    |
+| condition_id       | integer     | null: false                    |
+| postage_id         | integer     | null: false                    |
+| prefecture_id      | integer     | null: false                    |
+| days_post_id       | integer     | null: false                    |
 | price              | integer     | null: false                    |
 | user               | references  | null: false, foreign_key: true |
 
@@ -39,16 +37,25 @@
 - belongs_to :user
 - has_one :purchase
 
-## purchases テーブル
+## shippings テーブル
 
 | Column             | Type       | Options                        |
 | ------------------ | ------     | ------------------------------ |
 | postcode           | string     | null: false                    |
-| address_prefecture | string     | null: false                    |
+| prefecture_id      | integer    | null: false                    |
 | address_city       | string     | null: false                    |
 | address_block      | string     | null: false                    |
 | address_building   | string     | null: true                     |
-| phone_number       | integer    | null: false                    |
+| phone_number       | string     | null: false                    |
+
+### Association
+
+- belongs_to :purchase
+
+## purchases テーブル
+
+| Column             | Type       | Options                        |
+| ------------------ | ------     | ------------------------------ |
 | user               | references | null: false, foreign_key: true |
 | item               | references | null: false, foreign_key: true |
 
@@ -56,3 +63,4 @@
 
 - belongs_to :user
 - belongs_to :item
+- has_one :shipping
