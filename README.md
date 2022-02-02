@@ -40,13 +40,15 @@
 ## shippings テーブル
 
 | Column             | Type       | Options                        |
-| ------------------ | ------     | ------------------------------ |
+| ------------------ | ---------- | ------------------------------ |
 | postcode           | string     | null: false                    |
 | prefecture_id      | integer    | null: false                    |
 | address_city       | string     | null: false                    |
 | address_block      | string     | null: false                    |
 | address_building   | string     | null: true                     |
 | phone_number       | string     | null: false                    |
+| purchase           | references | null: false, foreign_key: true |
+
 
 ### Association
 
@@ -55,7 +57,7 @@
 ## purchases テーブル
 
 | Column             | Type       | Options                        |
-| ------------------ | ------     | ------------------------------ |
+| ------------------ | ---------- | ------------------------------ |
 | user               | references | null: false, foreign_key: true |
 | item               | references | null: false, foreign_key: true |
 
