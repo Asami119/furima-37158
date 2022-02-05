@@ -1,14 +1,13 @@
 FactoryBot.define do
   factory :user do
-    nickname              {Faker::Name.initials(number: 2)}
+    nickname              {'テスト用ユーザー'}
     email                 {Faker::Internet.free_email}
-    password              {Faker::Internet.password(min_length: 6)}
+    password              {'test11'}
     password_confirmation {password}
-    last_name             {"テスト"}
-    first_name            {"テスト"}
-    last_name_kana        {"テスト"}
-    first_name_kana       {"テスト"}
-    birth_day             {Faker::Date.backward}
+    last_name             {'山田'}
+    first_name            {'太郎'}
+    last_name_kana        {'ヤマダ'}
+    first_name_kana       {'タロウ'}
+    birth_day             {'1970-01-01'}
   end
 end
-#rb.7-10は仮。あとでやります
