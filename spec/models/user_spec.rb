@@ -102,6 +102,13 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include('Password には英字と数字の両方を含めて設定してください')
       end
 
+      it 'passwordが全角文字だと登録できない' do
+        @user.password = 'テストテスト'
+        @user.password_confirmation = 'テストテスト'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Password には英字と数字の両方を含めて設定してください')
+      end
+
       it 'last_nameは全角でないと登録できない' do
         @user.last_name = 'test'
         @user.valid?
