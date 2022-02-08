@@ -26,6 +26,7 @@ class Item < ApplicationRecord
   end
 
   validates :price, numericality: { only_integer: true, message: 'は半角数値のみ設定可能です' }
-  validates :price, numericality: { greater_than_or_equal_to: 300,less_than_or_equal_to: 9999999, message: 'は、¥300~¥9,999,999の間で設定してください' }
-
+  validates :price,
+            numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999,
+                            message: 'は、¥300~¥9,999,999の間で設定してください' }
 end
